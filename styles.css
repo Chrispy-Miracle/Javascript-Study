@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+h1, h2, h3, h4, p {
+    text-align: center;
+    padding: 10px;
+    background: rgb(221, 136, 105);
+    line-height: 1.5;
+    display: block;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: rgb(105, 51, 31);
+}
+h2 {
+    margin-top: 8vh;
+}
+h4{
+    align-self: flex-start;
+    margin-left: 10vw;
+}
+p{
+    width: 90%;
+    line-height: 1.5;
+    font-size: 18px;
+}
+code {
+    font-size: 18px;
+    background: rgb(243, 206, 193);
+    padding: 3px;
+    border-radius: 5px;
+    margin: 3px;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:rgb(236, 178, 156);
+    padding: 20px;
+}
+#dataTypes, #objTypes{
+    text-align: center;
+    border: 1px solid  rgb(221, 136, 105);
+    width: 65vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    line-height: 1.5;;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+dt{
+    display: block;
+    background: rgb(221, 136, 105);
+    box-shadow: 2px 2px 2px grey;
+    width: 35vw;
+    margin:10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+dd, #variables, #js, #console, #oldFunction, #ahoy, #function, #arrow{
+    background: rgb(243, 206, 193);
+    margin: 5px;
+    width: 55vw;
+    border: 1px solid coral;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+} 
+button {
+    background: rgb(243, 206, 193);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+button:hover{
+    background: coral;
+}
+span {
+    color: purple;
+    background: rgb(223, 162, 140);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(105, 51, 31);
+}
+

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Javascript Study</title>
+</head>
+<body>
+    <h1>This is My Javascript Study</h1>
+    <p>Javascript is a progamming language largely used for front-end Web development, 
+        but it can also be used for backend using frameworks like node.js. <br>
+        Whereas HTML creates elements and CSS styles them, Javascript makes them "do stuff".<br>
+        This page was built to explore as many Javascript concepts as possible.
+    </p>
+    <section>
+        <h2>Intro to Datatypes</h2>
+        <p>First of all, like most programming languages, Javascript uses Primitive data types:</p>
+            <div id="dataTypes">
+                <dt>Boolean:</dt>
+                    <dd><code>true</code> or <code>false</code></dd>
+                <dt>Numbers:</dt>
+                    <dd>A number between<code>-(2^53 − 1) and 2^53 − 1)</code> could also be a decimal (or <i>"float-point"</i> number), 
+                    or <code>NaN</code> "Not a Number" or <code>+Infinity</code> or <code>-Infinity</code> </dd>
+                <dt>Strings:</dt>
+                    <dd>
+                        <code>"The actual words or characters you want inside of either single ('') or double ("") quotations"</code> 
+                    </dd>
+                <dt>Null:</dt>
+                    <dd>Only has one value: <code>Null</code>, which is the intentional absence of any object value </dd>
+                <dt>Undefined:</dt>
+                    <dd><code>Undefined</code> means no value was assigned or returned</dd>
+                <dt>BigInt:</dt>
+                    <dd>If you some reason need a huge number that is above <code>Number.MAX_SAFE_INTEGER</code>, you can put a "n" at the end of it and then its one of these...</dd>
+                <dt>Symbol:</dt>
+                    <dd>A unique and immutable value. Perhaps the key of an Object property? </dd>
+            </div>
+          
+        <h2>Objects:</h2>
+        <p>Objects are basically collections of properties. You will often see properties with key, value pairs.
+            Property types include data properties and accessor properties.
+        </p>
+        <p>    
+            The docs list "Data Properties" as Value (any type), Writable, Enumerable, Configurable or, conversely,
+            Read-only, DontEnum and DontDelete. These would all be boolean values, except Value, which can be any data type.
+        </p> 
+        <p>
+            Accessor Properties include: Get and Set (both would have a function object or be undefined),
+            also Enumerable and Configurable (both boolean values). 
+        </p>
+            <div id=objTypes>
+                <h3>Normal Objects</h3>
+                <p>A normal object is a mapping between keys and values.  A function is a "callable" object.</p>
+                <dt>Dates</dt>
+                    <dd>This is a built in object type and can be accessed with: <code>new Date()</code>.</dd>
+                <dt>Indexed Collections--Arrays: </dt>
+                    <dd><code>["lists", "of", "strings", "or", ["more", "arrays"], "or", 
+                        {type: objects, conjunction: with, key: value }, "pairs", "or", 1948, 10]</code>
+                        <br>Arrays can be manipulated with Array.prototype methods.</dd>
+                <dt>Typed Arrays:</dt>
+                    <dd>Typed arrays are a beast I have not really dealt with. They do exist though, and maybe one day I will figure it out and describe them.</dd>
+                <dt>Keyed Collections (Maps, Sets, WeakMaps, WeakSets):</dt>
+                    <dd>Again, not sure about this, and will fill in later.</dd>
+                <dt>JSON: Javascript Object Notation</dt>
+                    <dd>Ooh, I actually understand this one!!  JSON looks like this:<br>
+                        <code>{<br>
+                                "name": "Chris",<br>
+                                "description": "This is how JSON looks"<br>
+                            }</code><br>  Remember to use double-quotes and put commas in between! JSON is a popular database format. </dd>
+            </div>       
+        
+    </section>
+    <section>
+        <h2>How To Manipulate Data:</h2>
+        <p>Ok, so now that we have our basic data types, we will have to learn to do somthing with them</p>
+        <h3>Variables and Constants</h3>
+        <p>Data must be defined in some way in order to use it, so we must create variables or constants.<br>
+        Formerly, the keyword <code>var</code> was used to define variables. <br> While you can still use this, the new way of defining is like so:
+        <br><code>let variableInCamelCase;</code> <br> would create the variableInCamelCase, while <br><code>let variableInCamelCase = "variable";</code><br>
+        would both create it and define it as the string "variable".</p>
+        <p>
+            Similarly, if the piece of data will remain constant throughout program, you may use the keyword const:<br> <code>const WIDTH = 600px</code><br>
+            In some instances, constants are capitalized.
+        </p>
+        <p>
+           In my Javascript file, "main.js", I have written the following code:<br>
+           <code>var variable= "old way of variables"</code><br>
+            <code>let variableInCamelCase = "variable"</code><br>
+            <code> const WIDTH = 600</code><br>
+            <code>let doesIt = true</code> <br>
+            <code> document.getElementById("variables").innerHTML= variable + ", " + variableInCamelCase +", " + WIDTH;</code><br>
+            Here, I have set the "innerHTML" of my HTML element with the id of "variables" to list the following:<br>
+            variable, variableInCamelCase, WIDTH  and doesIt along with a comma and space in between terms. <br>
+            Notice how a "+" operator is used to "concatenate" strings, or "put them together" <br>
+            Below is the div tag with the id "variables":
+        </p>
+        <p id="variables"></p>
+        <p>In this example, variable and variableInCamelCase are both strings, WIDTH is a number and doesIt has a boolean value of true.</p>
+    </section>
+    <section>
+        <h2>Linking Javascript to HTML and console.log()</h2>
+        <h3>Adding a Script Tag</h3>
+        <p>Before we get too much further along, it is probably a good time to mention a couple important and helpful concepts.<br>
+        In order for Javascript to work properly ( or even at all), we will need to link it to our HTML much like we link CSS to our pages.<br>
+        For this purpose, we use a "script" tag in the HTML at the bottom of the body element of the HTML.<br>
+        Why at the bottom, you ask?  This is because the page renders top to bottom, and if the Javascript file was linked at the top,
+        then the elements that are referred to in the js file would not yet exist and therefore, could not yet be manipulated by the javascript file.
+        So, what we would do to make a javascript file named "main.js" functional would look like this:<br>
+        </p>   
+        <code id="js"></code>
+        <p>This script tag would go directly above the body closing tag. Here, "src" stands for "source"  <br>
+        In this example, I created an element with id "js" and a constant "jsScript" then used <code>document.getElementById("js").textContent = jsScript</code><br>
+        to fill in the code example.</p>
+        <h3>Using console.log()</h3>
+        <p>Most Internet Browsers have a "console" in the "developer tools" section. (Firefox doesn't do this properly).<br>
+            You can use the shortcut "Ctrl + Shift + I" to open the dev-tools or you can click through to them in the upper right corner of your browser.<br>
+            To click through, click the 3 vertical dots in the upper right corner, then click "More tools" and then "developer tools"<br>
+            In the dev-tools console for this page you will find that I made a console.log() with the string "This is a console.log() of a string" inside the parenthesis.<br>
+            This message, and others can be found in the console, along with several other helpful tools, including a responsive design mode that will
+            let you see what your web-app will look like on different sized screens, an element inspector and others.<br>
+            Using the console to log various things can help you figure out what is going on and debug your pages. <br>
+            For instance, you can put a variable inside to see if it is acting like you think it should and evaluate from there.<br>
+            The code for this console log is as follows:</p>
+            <code id="console">console.log("This is a console.log() of a string");</code>
+    </section>
+    <section>
+        <h2>Functions</h2>
+        <p>
+            In Javascript, we use functions to create and name a reusable piece of code that performs the same operation everytime, perhaps on different pieces of data.
+            The older way of defining a function called "oldFunction" is like so:
+        </p>
+        <code id="oldFunction">function oldFunction() {<br>
+            contents of function here<br>
+        };</code>
+        <p>
+            Here, I have made a function in my main.js file called "ahoy" that creates an "alert" with a string in it when clicked using an html onclick property.<br>
+            The function itself looks like this:
+        </p>
+        <code id="function">function ahoy(){<br>
+            alert("Ahoy!! Consider yourself alerted!);<br>
+        };</code>
+        <p>The element property inside of the html opening tag that enables this looks like this:</p>
+                <code id="ahoy">onclick="ahoy()"</code>
+        <button onclick="ahoy()">Click here to see the alert!</button>
+        <p>There is a more modern syntax for creating functions as well.<br>
+              <i>Arrow functions</i> reduce the number of characters needed to create functions, and allow your functions to be stored as constants.<br>
+            The syntax for an arrow functions is like this: </p>
+        <code id="arrow">const arrowFunc = () => {console.log("This string came from the function named 'arrowFunc' ")};</code>    
+        <p>The arrow function is then called when needed with parenthesis after like so:</p>
+        <code>arrowFunc();</code>
+        <p>Say you wanted a function to deal with a variable or constant.  You can "feed" these pieces of data 
+            to your function as "arguments".  For instance, say you want to add a variable to a known number, 
+            you could create a function that looks something like this:
+        </p>
+        <code>let num = 10<br>
+        const add = (num) => {return num + 5};</code>
+        <p>
+            This would return the value 15 as it is currently written. However, you could reassign the value of "num"
+            and then the function "add" would add 5 to the current value of "num".
+        </p>
+    </section>
+    <section>
+        <h2>Operators:</h2>
+        <p>
+            In the previous function, we used the plus, "+" operator to add a number to a variable which was also a number.
+            We had previously used the "+" operator to concatenate strings together, which is another use for it.
+            We have also seen the equals "=" sign in use as we have applied it to create variables and assigned them values.
+            After the original assigning of a variables value, it can be changed later using the "=" sign.
+        </p>
+        <code>let amount = 20<br>
+        amount = 15</code>
+        <p>
+            In this example, we have reassigned the value of "amount" from its original designation of 20 to a new value of 15.
+            We could also add or subtract from it in the following fashion:
+        </p>
+        <code>amount += 10</code>
+        <p>Now, "amount" is equal to 25</p>
+        <code>amount -= 12</code>
+        <p>Now, "amount" is equal to 13.  <br>
+        You could also add or subtract like this:</p>
+        <code>amount = amount + 5</code>
+        <p>Now, amount would be equal to 18<br>
+        Similarly, as you may have guessed, we can also multiply using <code>*</code> or divide using <code>/</code>.<br>
+        You can also use <code>*=</code> or <code>/=</code> to assign a variable a new value multiplied or divided by a value, 
+        much like as is done above with <code>+=</code> and <code>-=</code><br>
+        Additionally, we can use comparison operators like "greater than" and "less than". <code>></code> and <code><</code>.<br>
+        Also, as you may expect, we also have <code>>=</code> and <code><=</code> for "greater than or equal to" and 
+        "less than or equal to", respectively.<br>
+        We also can check the equality of various data using <code>==</code> for "loose equality" or <code>===</code>
+        for "strict equality".  For instance the string <code>"45"</code> loosely equals the number <code>45</code>,
+        but the two are not strictly equal to one another.<br>
+        We could also use <code>!</code> to mean "not".  Thus <code>!==</code> would be strict non-equality, Whereas
+        <code>!=</code> would represent loose non-equality.
+        </p> 
+        <h3>Other Operators:</h3>
+        <p>There are a few other operators you will want to know about. The <code>%</code> operator will give you the remainder
+        of dividing two numbers. For instance, the following would return 2:<br></p>
+        <code>8 % 3;</code>
+        <p>Also available is <code>**</code> which will deliver exponents. The following would return 9:</p>
+        <code>3**2;</code>
+        <p>You can increment or decrement a number or variable by one using <code>++</code>or <code>--</code><br>
+        Then <code>9++;</code> would return 10, and <code>6--;</code> would return 5.</p>
+        <p>Finally, for now, we have "and" represented by <code>&&</code> as well as <code>||</code> representing  "or". </p>
+    </section>
+    <section>
+        <h2>Conditionals:</h2>
+        <p>Conditional Statements in Javascript are used to make different things happen in different scenarios.
+            Mainly, these are "if/else" statements, potentially along with "else if" statements. Handily, 
+            in javascript, these statements use this exact wording, so an if/else statement with an else if statement included
+            would look something like this:
+        </p>
+        <code>let num = 9;<br>
+            let string;<br>
+            if (num >= 10) {<br>
+            string = "It is at least 10";<br>
+            } else if (num < 2 && num > 0 || num === 5){ <br>
+            string = "It is between 2 and 0 or it is 5";<br>
+            } else {<br>
+                string = "It is under 10, but not it is not 5 and its not between 2 and 0";<br>
+            };
+            </code>
+        <p>Additionally, we can use a simpler syntax for conditional statements that looks like this:</p>
+        <code> (num === 9) ? string = "It is nine!" : string = "It isn't nine...";</code>  
+        <p>In this example, we check if num is strictly equal to nine, so we first have a term to evaluate,
+            then we have a question mark <code>?</code> followed by what to do if the statement evaluates as true.<br>
+            In this instance, if it is true, we assign the value of the variable string to "It is nine!"
+            Following that, we have a colon <code>:</code>, after which we have the code to execute if the statement 
+            evaluates false, which is setting the value of "string" to "It isn't nine..."
+        </p>  
+    </section>
+    <section>
+        <h2>Loops:</h2>
+        <p>There are a couple of different Loops in javascript that we can use to replay certain lines of code while 
+            certain conditions are met, and quit replaying those same lines if the condition is no longer met.
+            Our two basic kinds of loops are the "for loop" and the "while loop".  One must be somewhat careful 
+            when creating loops to ensure that they do not create an infinite loop that does not ever stop because 
+            the condition under which it would stop never happens.  This could be a way to crash your computer.<br>
+            The following is the basic syntax for a "for loop".
+        </p>
+        <code>for (let i = 0; i <= array.length; i++) {<br>
+        array[i] += 2;<br>
+        }</code>
+        <p>In this example there are a few concepts we have already covered and a couple that we have not yet discussed.
+            Lets look at each piece of this piece of code.  First, we have the keyword <code>for</code> followed
+            by a few things inside of parenthesis.  The first thing inside the parenthesis is a declaration of the variable <code>i</code>
+            as <code>0</code> followed by a semi-colon.  Next, we have the condition that the code will use to decide whether to 
+            continue re-executing itself.  If that condition, in this case <code>i <= array.length;</code>, is no longer met 
+            then the loop will end. We will get more into array methods later, but here we are checking the length of the array
+            and the loop is set to run once for each element of the array. Note that the condition is also followed by a semi-colon.  The final piece of code inside the 
+            parenthesis is <code>i++</code>, which is a line of code to run after each time the loop is executed.
+            In this example, and often, you will increment the <code>i</code> variable, and execute once for each index in the array. <br>
+            Then you will notice that we have some curly braces, much like a function, and indeed, this is the code that
+            will be executed each time the loop runs.  This time we are simply adding 2 to whatever data is pre-existing in the 
+            array called "array" (which presumably already exists).
+        </p>
+        <p>Next up, we have the "while loop".  While for loops are often used to loop through arrays or indexed collections, the while loop 
+            can simply execute themselves a certain number of times.  A while loop syntactically looks like this:
+        </p>
+        <code>let x = 1;<br>
+            while (x <= 10) {<br>
+            console.log("Dude, it is still less than or equal to 10");<br>
+            x++;<br>
+            };
+        </code>
+        <p>Here, the variable x is set to the value 1, then the condition to execute loop code is set as 
+            <code>x <= 10</code>, then comes the code to re-execute as long as the loop plays.  Here is it simply
+            console logging a string. Next comes the important piece of code if you don't want to create an infinite loop:
+            <code>x++;</code>.  This incrementation of the variable is what will cause the condition of x being less than or 
+            equal to 10 to no longer be true after a number of times through the loop, causing the loop to stop replaying itself.
+        </p>
+    </section>
+    <section>
+        <h2>String Methods:</h2>
+        <p>As defined above, strings are characters inside of either single or double quotes that are to be interepreted
+            literally as the characters themselves.  This may be a word or a sentence, with alpha-numeric characters or even symbols.
+        </p>
+        <h3>String Constructor:</h3>
+        <p>You can call <code>String(argument)</code> as a function an the argument provided in the parenthesis will become a string.<br>
+        Conversely, you could use <code>new String(argument)</code> to create a string object. However, the former is supposedly more useful,
+         while the latter is not recommended. </p>
+        <p>Consider this: <code>let arg = String("argument")</code>. Now the string <b>arg</b> equals <span id="argument" style="color: rgb(163, 57, 19)"></span> and can be utilized as such.
+        The variable arg is also logged in the console.</p>
+        <h3>Static String Methods:</h3>
+        <h4>String.fromCharCode()</h4>
+        <p><code>String.fromCharCode(num, num1, num2)</code> would produce a string from unicode, with each num argument being the unicode code 
+        of the desired character.  You will want to know unicode if this is going to work for you. Here we will just see what happens. </p>
+        <code>num = 65;<br>
+            num1 = 126;<br>
+            num2= 75;<br>
+            let unicodeString = String.fromCharCode(num, num1, num2);<br>
+            document.getElementById(unicodeStr).textContent = unicodeString;</code>
+        <p>Here is a span  (in purple) with the id="unicodeStr" containing the string we just created. <span id="unicodeStr" style="color:purple"></span></p>
+        <h4>String.fromCodePoint()</h4>
+        <p>We can use <code>String.fromCodePoint(num3, num4, num5)</code> will similarly produce a string from the num arguments.
+        I know basically nothing about code point.</p>
+        <code>num3 = 0x4905;<br>
+            num4 = 45;<br>
+            num5= 0x9804;<br>
+            let codePointString = String.fromCharCode(num3, num4, num5);<br>
+            document.getElementById("codePtStr").textContent = codePointString;</code>
+            <p>Apparently, here I have randomly selected numbers that are perhaps Chinese from code point:  <span id="codePtStr" style="color:purple"></span>.  
+            Clearly, I have no real clue about what code point really is.  This will be addressed in more detail some other time.</p>
+        <h4>String.raw()</h4>
+        <p> <code>String.raw()</code> is another static string method, usually used with template literals: <code>${literalGoesHere}</code>.<br>
+        The main thing that seems to happen with this method is that normal escape characters are not escaped and instead are used literally as characters. 
+        This includes backslashes and newline characters.  <code>let rawStr = String.raw`/bust\Raw/Dawg`</code>
+        Then we would use a template literal to use the string we have created.  Remember to look closely because we are using back-ticks rather than single quotes here. 
+        This will make a difference when using template literals. We also omit the parenthesis when using this method.</p>   
+        <code>
+            let rawStr = String.raw`/bust/Raw/Dawg`;<br>
+            console.log(`yo this is a rawStr: ${rawStr}`);<br>
+            document.getElementById("raw").textContent= `Yo, this is a rawStr: ${rawStr}`;
+        </code>
+        <p>Here is the raw stuff in purple (span element has id of "raw" here): <span id="raw" style="color:purple"></span>  
+        <br>This is also logged in the console.</p>
+        <h3>String.prototype Methods (and a property):</h3>
+        <h4>String.length()</h4>
+        <p>String.prototype.length is a read-only method that returns the length of the string.<br>
+        <code> document.getElementById("length").textContent = `unicodeString:  ${unicodeString}, unicodeString.length:  ${unicodeString.length}`</code> would render the length of our variable "unicodeString" in the span element below. <br>
+        <span id="length" style="color: purple"></span> <br>
+        This has also been console logged. This is basically the same as the array.length method and is often used in creating loops.</p>
+        <h4>String.prototype.at()</h4>
+        <p><code>String.prototype.at(index)</code>  will return the character in a string that is at the specified index.<br> For instance, <code>arg.at(3);</code> would be <span id="at" style="color:purple"></span> on account that the character at index 3 of "argument" is the 'u'.</p>
+        <p>You can also get specific characters using a negative index number: <code>arg.at(-1);</code> which would return <span id="atNeg"></span> because 't' is the last character in "argument".</p>
+        <h4>String.prototype.charAt()</h4>
+        <p><code>String.prototype.charAt()</code> will also return a UTF-16 character at specified index, but doesn't do negative indices</p>
+        <h4>String.prototype.charCodeAt()</h4>
+        <p><code>String.prototype.charCodeAt(index)</code> will return the UTF-16 character code at the specified index.<br>
+        <code>arg.charCodeAt(2);</code> would return <span id="charCodeAt"></span></p>
+        <h4>String.prototype.codePointAt()</h4>
+        <p><code>String.prototype.codePointAt(index)</code> will return the unicode code point at the specified index.<br>
+            <code>arg.codePointAt(3);</code> would return <span id="codePointAt"></span></p>
+        <h4>String.prototype.concat()</h4>
+        <p><code>String.prototype.concat(str1, str2)</code> will concatenate (or combine) strings together.<br>
+            <code>arg.concat(variableInCamelCase, " ", rawStr);</code> would return the string <span id="concat"></span></p>
+        <h4>String.prototype.endsWith()</h4>
+        <p><code>String.prototype.endsWith(StringToCheck, optionalLength)</code> will check if a string contains another string (stringToCheck) at its end.
+            The "length" parameter is optional and if provided will replace the default of String.length. Operation is case-sensitive.<br>
+            <code>rawStr.endsWith("Dawg");</code> would return a boolean value, in this instance: <span id="endsWith"></span></p>
+        <h4>String.prototype.includes()</h4>
+        <p><code>String.prototype.includes(StringToCheck, optionalPosition)</code> will check if a string contains another string (stringToCheck).
+           <br> The "position" parameter is optional and, if provided, will replace the search's beginning location default of index 0. Operation is case-sensitive.<br>
+            <code>rawStr.includes("RAW");</code> would return a boolean value, in this instance: <span id="includes"></span> because our variable "rawStr" includes "Raw", but not "RAW".</p>
+        <h4>String.prototype.indexOf()</h4>
+        <p><code>String.prototype.indexOf(stringToCheck, optionalPosition)</code> will check if a string contains another string (stringToCheck) and if so,
+             will return the index of the stringToCheck in the original string.<br>
+            The "position" parameter is optional and, if provided, will replace the search's beginning location default of index 0.<br>
+             Operation is case-sensitive.<br>
+            <code>variable.indexOf("way");</code> would return an index number, in this instance: <span id="indexOf"></span> because our variable "variable" includes 
+            "way" at the index 4. <br>
+             If the stringToCheck is not contained in the string, then the value <span id="indexOf2"></span> is returned. </p>
+        <h4>String.prototype.lastIndexOf()</h4>
+        <p><code>String.prototype.lastIndexOf(stringToCheck, optionalPosition)</code> will check if a string contains another string (stringToCheck) and if so,
+            will return the index of the last occurrence of stringToCheck in the original string.<br>
+           The "position" parameter is optional and, if provided, will replace the search's ending location which by default is <code>+Infinity</code>.<br>
+            If the position argument is longer than the string, this method will check the entire string.  Operation is case-sensitive.<br>
+           <code>variable.lastIndexOf("a");</code> would return an index number, in this instance: <span id="lastIndexOf"></span> because our variable "variable"'s last occurrence of  
+           "a" is at the index 15. <br>
+            If the stringToCheck is not contained in the string, for instance with the following:    <code>variable.lastIndexOf("z");</code> then the value <span id="lastIndexOf2"></span> is returned,
+            indicating that there is no such occurrence in the string. </p>
+        <h4>String.prototype.localeCompare()</h4>
+        <h4>String.prototype.match()</h4>
+        <h4>String.prototype.matchAll()</h4>
+        <h4>String.prototype.normalize()</h4>
+        <h4>String.prototype.padEnd()</h4>
+        <h4>String.prototype.padStart()</h4>
+        <h4>String.prototype.repeat()</h4>
+        <h4>String.prototype.replace()</h4>
+        <h4>String.prototype.search()</h4>
+        <h4>String.prototype.slice()</h4>
+        <h4>String.prototype.split()</h4>
+        <h4>String.prototype.startsWith()</h4>
+        <h4>String.prototype.substring()</h4>
+        <h4>String.prototype.toLocaleLowerCase()</h4>
+        <h4>String.prototype.toLocaleUpperCase()</h4>
+        <h4>String.prototype.toLowerCase()</h4>
+        <h4>String.prototype.toUpperCase()</h4>
+        <h4>String.prototype.trim()</h4>
+        <h4>String.prototype.trimEnd()</h4>
+        <h4>String.prototype.trimStart()</h4>
+        <h4>String.prototype.valueOf()</h4>
+    </section>
+    <section>
+        <h2>Array Methods:</h2>
+    </section>
+    <section>
+        <h2>Number Methods:</h2>
+    </section>
+    <section>
+        <h2>Object Methods:</h2>
+    </section>
+    <section>
+        <h2>Events:</h2>
+    </section>
+    <section>
+        <h2>Asynchronous Javascript:</h2>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
