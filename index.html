@@ -275,13 +275,16 @@
         <p>As defined above, strings are characters inside of either single or double quotes that are to be interepreted
             literally as the characters themselves.  This may be a word or a sentence, with alpha-numeric characters or even symbols.
         </p>
+        
         <h3>String Constructor:</h3>
         <p>You can call <code>String(argument)</code> as a function an the argument provided in the parenthesis will become a string.<br>
         Conversely, you could use <code>new String(argument)</code> to create a string object. However, the former is supposedly more useful,
          while the latter is not recommended. </p>
         <p>Consider this: <code>let arg = String("argument")</code>. Now the string <b>arg</b> equals <span id="argument" style="color: rgb(163, 57, 19)"></span> and can be utilized as such.
         The variable arg is also logged in the console.</p>
+        
         <h3>Static String Methods:</h3>
+        
         <h4>String.fromCharCode()</h4>
         <p><code>String.fromCharCode(num, num1, num2)</code> would produce a string from unicode, with each num argument being the unicode code 
         of the desired character.  You will want to know unicode if this is going to work for you. Here we will just see what happens. </p>
@@ -291,6 +294,7 @@
             let unicodeString = String.fromCharCode(num, num1, num2);<br>
             document.getElementById(unicodeStr).textContent = unicodeString;</code>
         <p>Here is a span  (in purple) with the id="unicodeStr" containing the string we just created. <span id="unicodeStr" style="color:purple"></span></p>
+        
         <h4>String.fromCodePoint()</h4>
         <p>We can use <code>String.fromCodePoint(num3, num4, num5)</code> will similarly produce a string from the num arguments.
         I know basically nothing about code point.</p>
@@ -301,6 +305,7 @@
             document.getElementById("codePtStr").textContent = codePointString;</code>
             <p>Apparently, here I have randomly selected numbers that are perhaps Chinese from code point:  <span id="codePtStr" style="color:purple"></span>.  
             Clearly, I have no real clue about what code point really is.  This will be addressed in more detail some other time.</p>
+        
         <h4>String.raw()</h4>
         <p> <code>String.raw()</code> is another static string method, usually used with template literals: <code>${literalGoesHere}</code>.<br>
         The main thing that seems to happen with this method is that normal escape characters are not escaped and instead are used literally as characters. 
@@ -314,35 +319,45 @@
         </code>
         <p>Here is the raw stuff in purple (span element has id of "raw" here): <span id="raw" style="color:purple"></span>  
         <br>This is also logged in the console.</p>
+        
         <h3>String.prototype Methods (and a property):</h3>
+        
         <h4>String.length()</h4>
         <p>String.prototype.length is a read-only method that returns the length of the string.<br>
         <code> document.getElementById("length").textContent = `unicodeString:  ${unicodeString}, unicodeString.length:  ${unicodeString.length}`</code> would render the length of our variable "unicodeString" in the span element below. <br>
         <span id="length" style="color: purple"></span> <br>
         This has also been console logged. This is basically the same as the array.length method and is often used in creating loops.</p>
+        
         <h4>String.prototype.at()</h4>
         <p><code>String.prototype.at(index)</code>  will return the character in a string that is at the specified index.<br> For instance, <code>arg.at(3);</code> would be <span id="at" style="color:purple"></span> on account that the character at index 3 of "argument" is the 'u'.</p>
         <p>You can also get specific characters using a negative index number: <code>arg.at(-1);</code> which would return <span id="atNeg"></span> because 't' is the last character in "argument".</p>
+        
         <h4>String.prototype.charAt()</h4>
         <p><code>String.prototype.charAt()</code> will also return a UTF-16 character at specified index, but doesn't do negative indices</p>
+        
         <h4>String.prototype.charCodeAt()</h4>
         <p><code>String.prototype.charCodeAt(index)</code> will return the UTF-16 character code at the specified index.<br>
         <code>arg.charCodeAt(2);</code> would return <span id="charCodeAt"></span></p>
+        
         <h4>String.prototype.codePointAt()</h4>
         <p><code>String.prototype.codePointAt(index)</code> will return the unicode code point at the specified index.<br>
             <code>arg.codePointAt(3);</code> would return <span id="codePointAt"></span></p>
-        <h4>String.prototype.concat()</h4>
+        
+            <h4>String.prototype.concat()</h4>
         <p><code>String.prototype.concat(str1, str2)</code> will concatenate (or combine) strings together.<br>
             <code>arg.concat(variableInCamelCase, " ", rawStr);</code> would return the string <span id="concat"></span></p>
-        <h4>String.prototype.endsWith()</h4>
+        
+            <h4>String.prototype.endsWith()</h4>
         <p><code>String.prototype.endsWith(StringToCheck, optionalLength)</code> will check if a string contains another string (stringToCheck) at its end.
             The "length" parameter is optional and if provided will replace the default of String.length. Operation is case-sensitive.<br>
             <code>rawStr.endsWith("Dawg");</code> would return a boolean value, in this instance: <span id="endsWith"></span></p>
-        <h4>String.prototype.includes()</h4>
+        
+            <h4>String.prototype.includes()</h4>
         <p><code>String.prototype.includes(StringToCheck, optionalPosition)</code> will check if a string contains another string (stringToCheck).
            <br> The "position" parameter is optional and, if provided, will replace the search's beginning location default of index 0. Operation is case-sensitive.<br>
             <code>rawStr.includes("RAW");</code> would return a boolean value, in this instance: <span id="includes"></span> because our variable "rawStr" includes "Raw", but not "RAW".</p>
-        <h4>String.prototype.indexOf()</h4>
+        
+            <h4>String.prototype.indexOf()</h4>
         <p><code>String.prototype.indexOf(stringToCheck, optionalPosition)</code> will check if a string contains another string (stringToCheck) and if so,
              will return the index of the stringToCheck in the original string.<br>
             The "position" parameter is optional and, if provided, will replace the search's beginning location default of index 0.<br>
@@ -350,7 +365,8 @@
             <code>variable.indexOf("way");</code> would return an index number, in this instance: <span id="indexOf"></span> because our variable "variable" includes 
             "way" at the index 4. <br>
              If the stringToCheck is not contained in the string, then the value <span id="indexOf2"></span> is returned. </p>
-        <h4>String.prototype.lastIndexOf()</h4>
+        
+             <h4>String.prototype.lastIndexOf()</h4>
         <p><code>String.prototype.lastIndexOf(stringToCheck, optionalPosition)</code> will check if a string contains another string (stringToCheck) and if so,
             will return the index of the last occurrence of stringToCheck in the original string.<br>
            The "position" parameter is optional and, if provided, will replace the search's ending location which by default is <code>+Infinity</code>.<br>
@@ -359,27 +375,341 @@
            "a" is at the index 15. <br>
             If the stringToCheck is not contained in the string, for instance with the following:    <code>variable.lastIndexOf("z");</code> then the value <span id="lastIndexOf2"></span> is returned,
             indicating that there is no such occurrence in the string. </p>
-        <h4>String.prototype.localeCompare()</h4>
+        
+            <h4>String.prototype.localeCompare()</h4>
+        <p><code>String.prototype.localCompare(strToCompare, locale, options)</code> is a doozy!...<br>
+        Ok, so <code>strToCompare</code> is the easiest of the arguments to explain here, and it is 
+        the only required argument.  <br>If the original string has an index that is before <code>strToCompare</code>,
+        this method will return a negative number, otherwise it will return positive if after, 
+        or 0 if equal. <br> Let's try:</p>
+        <code>let ogString = "abra";<br>
+        let strToCompare = "cadabra";<br>
+        ogString.localeCompare(strToCompare);</code>
+        <p>In this instance, the result is: <span id="localCompare"></span> because "a" comes before "c".<br>
+        Then you can use the <code>locale</code> argument to specify which alphabet's characters you are using.<br>
+        For instance, "sv" is Swedish, "en" is English, "fr" is French and "de" is German.  <br>
+        This allows sorting with special characters that may exist in certain alphabets.<br>
+        Ok, so then there is an <code>options</code>argument.<br>  Maybe later? </p>
+        
         <h4>String.prototype.match()</h4>
+        <p><code>String.prototype.match()</code> is our first string method that uses <b>Regular Expressions</b> or Regex.</b><br>
+        Regex is an entirely separate topic, however and we will have to get into it later, but basically
+        you can use this method to check if the string matches a regex term. <br>
+        This means you can check for any number of particular letters, numbers or symbols in a particular order,
+        in a particular length and so on. <br> 
+        Regex is pretty neat actually and I would suggest <a href="regex101.com">regex101.com</a>.<br> 
+        There you can test all kinds of regular expressions against various test cases to see if it properly 
+        suits your needs before putting it in your code </p>
+        <p>But how does <code>.match()</code> work though!? <br>
+        Well, suppose you wrote something like this:<code>ogString.match(/bra/)</code>
+        Then, because our variable <code>ogString</code> does in fact have the characters "bra"
+        in it, in that precise order, this instance of <code>.match()</code>returns 
+        <span id="match"></span>, just once in this instance because it matched only once (and we didn't use the "g" tag, like we do below).<br>
+        <code>ogString.match(/a/g)</code> would return the following: <span id="match2"></span>.<br>
+        This is on account that the string has a match of the lowercase letter "a" two times, 
+        and we have let the match check more than once using the "g" tag (for "global")
+        after the contents of the slashes (/regexGoesInBetweenTheseSlashes/g).
+        Regex really is a topic all its own, I will likely cover it more in depth somewhere in this project.</p>
+        
         <h4>String.prototype.matchAll()</h4>
+        <p><code>String.prototype.matchAll(regex)</code> returns not only a matched regex, but also capturing groups within that regex.<br>
+        The javascript docs use this example, which seems pretty wild at first, but can help show what kind of info this method returns.</p>
+        <code>let regex = /t(e)(st(\d?))/g;<br>
+            let string = "test1test2";<br>
+            console.log([...string.matchAll(regex)]);<br>
+            document.getElementById("matchAll").textContent = [...string.matchAll(regex)][0];<br>
+            document.getElementById("matchAll2").textContent = [...string.matchAll(regex)][1];</code>
+        <p>In this example, we have two complete matches of our regex term, "test1" and "test2".<br>
+              When we use the spread operator ([...]), we "spread" the contents into an array. <br>
+                So, for this example, our console log will return two arrays, one for each complete match.<br>
+            Additionally, each of these arrays will contain an item for each of the capturing groups that had their requirements met within tthe complete match.<br>
+            Then, in my console, each of these arrays also has the following properties: "groups" which is undefined in this instance, 
+            "index" which tells the index of the first charcter in the string we are checking against the regex, 
+            "input" which returns our orginal test string, and finally "length" which is the number of characters       
+            in the complete match.<br> Here is the returned content from this example:<br>  array[0]: <span id="matchAll"></span><br>
+            array[1]:  <span id="matchAll2"></span>
+        </p>
+
         <h4>String.prototype.normalize()</h4>
+        <p><code>String.prototype.normalize(form)</code> appears to mostly be handy when there are different ways to encode characters.
+        In some instances, a character that visually appears the same as another, could actually have different codes and code lengths.
+        <code>normalize()</code> makes it so that characters that are visually the same will compute as equal values and 
+        having equal lengths.<br>
+        For instance, consider: </p>
+        <code>let string1 = '\u00F1';            // ñ<br>
+            let string2 = '\u006E\u0303';      // ñ<br><br>            
+            console.log(string1 === string2); // false<br>
+            console.log(string1.length);      // 1<br>
+            console.log(string2.length);      // 2</code>
+            <p>Whereas, if you normalize the strings, they become stictly equal as well as equal in length:</p>
+        <code>            
+            string1 = string1.normalize('NFD');<br>
+            string2 = string2.normalize('NFD');<br><br>            
+            console.log(string1 === string2); // true<br>
+            console.log(string1.length);      // 2<br>
+            console.log(string2.length);      // 2</code>
+        <p>The values for the argument "form" will specify the "Unicode Normalization Form". If omitted,
+            this will default to "NFC".  Here are acceptable values and their meanings: <br>
+            "NFC": Canonical Decomposition, followed by Canonical Composition.<br>
+            "NFD": Canonical Decomposition.<br>
+            "NFKC": Compatibility Decomposition, followed by Canonical Composition.<br>
+            "NFKD": Compatibility Decomposition.
+        </p>
+
         <h4>String.prototype.padEnd()</h4>
+        <p><code>String.prototype.padEnd(targetLength, padString)</code> is a method by which you can append padding
+        to the end of a string, as well as potentially creating a string with which to do the padding. The "targetLength"
+        argument is how long the string's length will be once the padding has been added, an the optional "padString"
+        argument will be a string to repeat until the desired padding length has been reached.<br>
+        Here we use this method to pad the end of a string using the padString argument as both "." and "1234" :</p>
+        <code>let padder = "Pad it up!";<br>
+            let padEnd = padder.padEnd(20, ".");<br>
+            let padEnd2 = padder.padEnd(20, "1234");<br>
+            document.getElementById("padEnd").textContent = padEnd;<br>
+            document.getElementById("padEnd2").textContent = padEnd2;</code>
+        <p>Here, the "." just repeats until the string is properly padded: <br> <span id="padEnd"></span><br>
+        Here, the "1234" repeats until the string is padded properly, but it doesn't necesarrily have to use the entire string: <br>
+         <span id="padEnd2"></span></p>
+
         <h4>String.prototype.padStart()</h4>
+        <p><code>String.prototype.padStart(targetLength, padString))</code> is identical to padEnd, except that it pads the start rather than the end of the string.<br>
+        It accepts the same arguments as padEnd():</p>
+        <code>let padStart = padder.padStart(20, "-");<br>
+            let padStart2 = padder.padStart(20, "dog");<br>
+            document.getElementById("padStart").textContent = padStart;<br>
+            document.getElementById("padStart2").textContent = padStart2;</code>
+        <p>Here, the "-" just repeats until the string is properly padded: <br> <span id="padStart"></span><br>
+            Here, the string "dog" repeats until the string is padded properly, but it doesn't necesarrily have to use the entire string: <br>
+            <span id="padStart2"></span></p>
+
         <h4>String.prototype.repeat()</h4>
+        <p><code>String.prototype.repeat(repeatCount)</code> is a method that will return a string repeated a certain 
+        number of times. The argument "repeatCount" defines how many times the string will be repeated and must be 
+        between 0 and +Infinity.  This is pretty straightforward. This code:<br>
+        <code>let repeatThis = "Say it again.  "<br>
+            document.getElementById("repeat").textContent = repeatThis.repeat(5);</code><br>
+        would render the following: <span id="repeat"></span></p>
+
         <h4>String.prototype.replace()</h4>
+        <p><code>String.protype.replace(pattern, replacement)</code> is used to replace a certain matched pattern in a string with a new substring.  
+        The "pattern" argument could either be a string or a regular expression, and the "replacement" argument could either be
+        a string or a "replacer function".  In this method, the orginal string remains the same and a new string is created for the replacement.<br>
+        Consider the following:</p>
+        <code>let re = /(Say)\s(it)/;<br><br>
+            console.log(repeatThis.replace(re, "Tell me"));<br>
+            document.getElementById("repeat").textContent = repeatThis.replace(re, "Tell me");<br><br>
+            console.log(repeatThis.replace(re, '$2, $1'));<br>
+            document.getElementById("repeat2").textContent = repeatThis.replace(re, '$2, $1');</code>
+        <p>Here is the results: <span id="replace"></span>  for the first example, and <span id="replace2"></span> for the second.<br>
+        In the first example, we simply used a regular expression to match the subtring "Say it", then we replaced the match with 
+        the substring "Tell me". <br>
+        The second example uses some extra particularities.  We use the "$" to denote the different capture groups in the 
+        regex and use replace to reverse the order of the capture groups, in this instance "Say" and "it".<br>
+        Some other considerations include that you may still add the global "g" or ignore "i" tags 
+        to your regex to either match all terms or to ignore case sensitivity, if you would like.  <br>
+        There are numerous more potentials with this method, including adding a replacer function,
+        but you may need to refer to the docs for now if you have a more intensive replacement need.</p>
+
+        <h4>String.prototype.replaceAll()</h4>
+        <p><code>String.prototype.replaceAll(pattern, replacement)</code> is very similar to the <code>.replace()</code> method,
+        but, as you may expect, replaces all instances of a pattern. If the "pattern" argument is a regular expression,
+        it must have a global "g" tag, or it will throw an error. The "pattern" could also be a substring of the orignal string. <br>
+        Here is an examaple:</p>
+        <code>
+            let replaceAllOfThis = "Replace most of most of this.";<br>
+            replaceAllOfThis.replaceAll('most', 'all');
+        </code>
+        <p>And this is what you get: <span id="replaceAll"></span></p>
+
         <h4>String.prototype.search()</h4>
+        <p><code>String.prototype.search(regex)</code> finds a pattern inside a string and returns the index of the match.<br>
+        A successful search will return the index of the substring, whereas an unsuccessful search returns "-1".<br>
+        Here is how this may work:</p>
+        <code>let sentence = "This is a sentence we are going to search through.";<br>
+            let regExp = /search/;<br>
+            let nope = /nope/;<br><br>
+            //this will search and tell you the index<br>
+            console.log(sentence.search(regExp));<br>
+            document.getElementById("search").textContent = (sentence.search(regExp));<br><br>
+            //this is checking the value at the search results' index.<br>
+            console.log(sentence[sentence.search(regExp)]);<br>
+            document.getElementById("search2").textContent = (sentence[sentence.search(regExp)]);<br><br>
+            //this is a failed search<br>
+            document.getElementById("search3").textContent = (sentence.search(nope));<br>
+            console.log(sentence.search(nope));</code>
+        <p>The preceding code would result in the following:<br>
+            Index of found match: <span id="search"></span><br>
+            Character at index of found match: <span id="search2"></span><br>
+            Failed search result: <span id="search3"></span>
+        </p>
+
         <h4>String.prototype.slice()</h4>
+        <p><code>String.prototype.slice(beginIndex, endIndex)</code> is a method that returns a new string from a string.<br>
+        The argument "beginIndex" is required and defines the index of the original string where to start the new string.  The argument "endIndex" is optional 
+        and defines the index of the original string to end the new string.  If "endIndex" is omitted, this will default
+        to the end of the original string.  You can use positive indexes as well as negative indexes if you would prefer to
+        slice in relation to the end of the original string rather than the beginning. Let's continue using the variable "sentence"
+        from the previous method's example.</p>
+        <code>console.log(sentence.slice(19, 31)); <br>
+            document.getElementById("slice").textContent = (sentence.slice(19, 31));
+        </code>
+        <span id="slice"></span><br>
+        <code>
+            console.log(sentence.slice(-8));<br>
+            document.getElementById("slice2").textContent = (sentence.slice(-8)); 
+        </code>
+        <span id="slice2"></span>
         <h4>String.prototype.split()</h4>
+        <p><code>String.prototype.split(separator, limit)</code> is a method that splits a string into an array of strings.<br>
+        If the "separator" argument is not provided, or does not match anything in the original string, then the result is 
+        an array with one item which is the original string.<br>
+        <code>sentence.split()</code> becomes <span id="split"></span><br> 
+        If the "separator" argument is just single or double quotes, then 
+        a separate string will be created in the new array for each character of the orginal string.
+        <code>sentence.split('')</code> becomes <span id="split2"></span><br>
+        and <code>sentence.split(' ')</code> would return <span id="split3"></span><br>
+        Check out the console logs for each of these versions as well. <br>
+         You will notice how these are, indeed, 
+        arrays of strings separated by our "separator".<br>
+        There is additionally the optional argument of "limit", which can limit the size of the created array to 
+        the number of elements defined in the "limit" argument. You can also split strings using a regex term as 
+        the "separator" argument.</p>
+
         <h4>String.prototype.startsWith()</h4>
+        <p><code>String.prototype.startsWith(searchString, position)</code> is a method which returns a boolean value
+        indicating whether or not the searched string begins with the "searchString".  If the optional "position" argument
+        is present, then the index position indicated is the starting position at which this search will start.<br>
+        For instance:<br>
+        <code>sentence.startsWith("This");</code> returns <span id="startsWith"></span>, because the sentence does start with "This",<br>
+        <code>sentence.startsWith("sentence");</code> returns <span id="startsWith2"></span> because it doesn't start with "sentence",<br>
+        and <code>sentence.startsWith("sentence", 10);</code> returns <span id="startsWith3"></span>, because the 10th index of our string begins the word "sentence".</p>
+
         <h4>String.prototype.substring()</h4>
+        <p><code>String.prototype.substring(indexStart, indexEnd)</code> is a method used to create substrings from the contents
+        of a larger string. Much like it sounds, the "indexStart" argument is the index of our pre-existing string where our
+        substring will start.  If provided, the optional argument "indexEnd" will define the index of the end of our substring. 
+        If the "indexEnd" argument is omitted, then the end of our substring will naturally default to the end of the pre-existing string.</p>
+        <code>let whaleThen = "Blue Whale";<br>
+            document.getElementById("substring").textContent = whaleThen.substring(5);<br>
+            document.getElementById("substring2").textContent = whaleThen.substring(0, 4);
+        </code>
+        <p>Here, the first result is: <span id="substring"></span> because the "W" in "Whale" is in the 5th index of our string.<br>
+        Then, the second result becomes: <span id="substring2"></span> because the word "Blue" starts at index 0 and goes til index 4.</p>
+        
         <h4>String.prototype.toLocaleLowerCase()</h4>
+        <p><code>String.prototype.toLocaleLowerCase(locale)</code> is a method almost identical to <code>toLowerCase()</code> 
+        except it is used to convert the contents of a string to the lowercase style of a particular locale. 
+         The "locale" argument, if omitted, will default to the host environement's 
+        current locale.  Here is a list of the language tags that are acceptable arguments: 
+        <a href="https://www.techonthenet.com/js/language_tags.php">Language Tags</a>.<br> 
+        More than one language tag can be used in the argument if they are listed in an array, and the result will become 
+        the "best available locale". Lets see what happens with the following code:</p>
+        <code>document.getElementById("localeLower").textContent = whaleThen.toLocaleLowerCase('fr-CA');<br>
+            document.getElementById("localeLower2").textContent = "Mañana".toLocaleLowerCase('en-US');</code>
+        <p>These two lines would create these results: <br>
+        Line 1: <span id="localeLower"></span> and<br>
+        Line 2: <span id="localeLower2"></span><br>
+        There is probably a better way to use other characters here, but we will have to readdress it later.</p>
+
         <h4>String.prototype.toLocaleUpperCase()</h4>
+        <p><code>String.prototype.toLocaleUpperCase(locale)</code> is a method almost identical to <code>toUpperCase()</code> 
+            except it is used to convert the contents of a string to the uppercase style of a particular locale. 
+             The "locale" argument, if omitted, will default to the host environement's 
+            current locale.  Above is a link to a list of language tags that are acceptable arguments.<br> 
+            More than one language tag can be used in the argument if they are listed in an array, and the result will become 
+            the "best available locale". Lets see what happens with the following code:</p>
+            <code>document.getElementById("localeUpper").textContent = whaleThen.toLocaleUpperCase('fr-CA');<br>
+                document.getElementById("localeUpper2").textContent = "Mañana".toLocaleUpperCase('en-US');</code>
+            <p>These two lines would create these results: <br>
+            Line 1: <span id="localeUpper"></span> and<br>
+            Line 2: <span id="localeUpper2"></span><br>
+            There is probably a better way to use other characters here, but we will have to readdress it later.</p>
+
         <h4>String.prototype.toLowerCase()</h4>
+        <p><code>String.prototype.toLowerCase()</code> converts all characters in a string to lowercase.
+            Simple as that.</p>
+            <code>let lower = "LOWERCASE"<br>
+            document.getElementById("lower").textContent = lower.toLowerCase();<br>
+            console.log(lower.toLowerCase());</code>
+        <p>So here (and in the console) we have: <span id="lower"></span></p>
+
         <h4>String.prototype.toUpperCase()</h4>
+        <p><code>String.prototype.toUpperCase()</code> converts all characters in a string to uppercase.
+            Simple as that.</p>
+            <code>let upper = "uppercase"<br>
+                document.getElementById("upper").textContent = upper.toUpperCase();<br>
+                console.log(upper.toUpperCase());</code>
+            <p>So here (and in the console) we have: <span id="upper"></span></p>
+
+        <h4>String.prototype.toString()</h4>
+        <p><code>String.prototype.toString()</code> converts a string object into a string.
+        Here, the first line of code makes a new string object. Second line, we console log that object. 
+        Then on the third line, we console log the same string object, but converted to a string.
+        </p> 
+        <code>let stringObject = new String('Object becomes string');<br>
+            console.log(stringObject);<br>
+            document.getElementById("toString").textContent = stringObject;<br><br>
+            console.log(stringObject.toString());<br>
+            document.getElementById("toString2").textContent = stringObject.toString();
+        </code> 
+        <p> Outside of the console, they appear the same: <br>
+        toString: <span id="toString"></span><br>
+        toString2: <span id="toString2"></span><br>
+        Be sure to check the console on this one to see the difference!<br>
+        You can always get to the console quickly using this shortcut: (ctrl + shift + i). </p>
+            
         <h4>String.prototype.trim()</h4>
+        <p><code>String.prototype.trim()</code> returns a new string that has removed any and all
+        whitespace characters from the original string from both the beginning and the end.
+        The original string remains unmodified. In your browser view, it may look like the variable "yoyo" 
+        defined below doesn't have too much extra whitespaces, but if you view the javascript file, 
+        you can see that it most certainly does. Also the console will help demonstrate this.</p>
+        <code>
+            let yoyo = "     yo yo yo       ";<br><br>
+            document.getElementById("trim").textContent = "Yo" + yoyo.trim() + ", we are going to trim this."<br>
+            document.getElementById("noTrim").textContent = "Yo" + yoyo + ", we are not going to trim this."<br><br>
+            console.log(yoyo);<br>
+            console.log("Yo" + yoyo.trim() + ", we are going to trim this.");<br>
+            console.log("Yo" + yoyo + ", we are not going to trim this.");
+        </code>
+        <p>In your browser, these lines would return the following, which almost look the same:<br>
+        trim: <span id="trim"></span><br>
+        noTrim: <span id="noTrim"></span><br>
+        However, be sure to check the console on this one on account that you can definitely see the difference there.
+        The noTrim example is second here to show that the original string is unmodified after the trim method is used.</p>
+
         <h4>String.prototype.trimEnd()</h4>
+        <p><code>String.prototype.trimEnd()</code> is just like <code>.trim()</code>, but only trims whitespace characters
+        from the end of the string. Lookey here:</p>
+        <code>
+            console.log("Yo" + yoyo.trimEnd() + ", we are going to trim the end of this.");<br>
+        </code>
+        <p>Just check the console log on this one, because your browser window will not demonstrate the difference properly. 
+            Compare to the previous console log to see the difference between this method and <code>.trim()</code>.  <br>
+        Apparently, you could alternately use <code>trimRight()</code> to acheive the same end.
+        </p>
+
         <h4>String.prototype.trimStart()</h4>
+        <p><code>String.prototype.trimStart()</code> is just like <code>.trim()</code>, but only trims whitespace characters
+            from the start of the string. Check it:</p>
+            <code>
+                console.log("Yo" + yoyo.trimStart() + ", we are going to trim the start of this.");<br>
+            </code>
+            <p>Just check the console log on this one, because your browser window will not demonstrate the difference properly. 
+                Compare to the previous console logs to see the difference between this method <code>.trimEnd()</code> and <code>.trim()</code>. <br> 
+            Apparently, you could alternately use <code>trimLeft()</code> to acheive the same end.
+            </p>
+
         <h4>String.prototype.valueOf()</h4>
+        <p><code>String.prototype.valueOf()</code> returns the primitive value of a string object.  
+        This method is apparently basically the same as the <code>.toString()</code> method.<br>
+        Let's use the same variable as we did in the .toString() method , "stringObject", and console log
+        the result of applying <code>.valueOf()</code> instead.</p>
+        <code>console.log(stringObject.valueOf());</code>
+        <p>Check the console! It is indeed the same string as the .toString() method.<br>
+        Why would we need both? I dunno...</p>
+        <p>This brings us to the conclusion of string methods!! Next, we will discuss array methods...</p>
+
     </section>
     <section>
         <h2>Array Methods:</h2>

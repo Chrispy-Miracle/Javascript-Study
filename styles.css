@@ -14,16 +14,32 @@ h1, h2, h3, h4, p {
     border: 1px solid black;
     color: rgb(105, 51, 31);
 }
+h1 {
+    font-size: 8vh;
+}
 h2 {
     margin-top: 8vh;
+    font-size: 7vh;
+    text-shadow: 1px 1px 2px black;
+    color: coral;
+    background:rgb(105, 51, 31);
+}
+h3 {
+    font-size: 4vh;
+    text-shadow: 1px 1px 2px lightgrey;
+    margin-top: 6vh;
 }
 h4{
-    align-self: flex-start;
-    margin-left: 10vw;
+    /* align-self: flex-start; */
+    /* margin-left: 10vw; */
+    font-size: 3vh;
+    background: rgb(105, 51, 31);
+    color: rgb(221, 136, 105);
+    text-shadow: 1px 1px 1px black;
 }
 p{
     width: 90%;
-    line-height: 1.5;
+    line-height: 2;
     font-size: 18px;
 }
 code {
@@ -32,6 +48,7 @@ code {
     padding: 3px;
     border-radius: 5px;
     margin: 3px;
+    line-height: 1.5;
 }
 body {
     display: flex;
